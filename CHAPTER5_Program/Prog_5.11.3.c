@@ -5,7 +5,12 @@ int main(void)
 	
 	printf("Please input the days number\n");
 	scanf("%d",&days);
-	printf("%d days are %d wekks, %d days",days,days/7,days%7);
+	while(days > 0)
+	{
+		printf("%d days are %d wekks, %d days\n",days,days/7,days%7);
+		printf("Please input the days number\n");
+		scanf("%d",&days);
+	}
 	return 0;
 }
 	
