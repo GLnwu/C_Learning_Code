@@ -14,7 +14,7 @@ int main(void)
 	{
 		square = (Down+i)*(Down+i);
 		cube = (Down+i)*(Down+i)*(Down+i);
-		printf("%d        %d      %d\n",(Down+i),square,cube);
+		printf("%d        %-9d%-6d\n",(Down+i),square,cube);
 	}
 	return 0;
 }	
