@@ -1,16 +1,31 @@
 #include<stdio.h>
 int main(void)
 {
-	int i = 0;
+	int i;
 	double A[8];
 	double B[8];
+	double temp = 0;
 
-	printf("Please enter eight number to A[8]: ");
-	do
-	{
-		scanf("%f",A[i++]);
-	}while(i < 8);
+	printf("Please enter eight number: \n");
+	for(i = 0;i < 8;i++)
+		scanf("%lf",&A[i]);
 
-	for(i = 0; i < 8;i++)
+	i = 0;
+	while(i < 8)
 	{
-		B[i]=
+		temp = A[i]+temp;
+		B[i] = temp;
+		i++;
+	}
+	printf("Now the input number is:\n");
+	for(i = 0;i < 8;i++)
+		printf("%g ",A[i]);
+	printf("\n");
+
+	printf("The sum of in order from 1~m is(m = 1-8):\n");
+	for(i = 0;i < 8;i++)
+		printf("%g ",B[i]);
+	printf("\n");
+	
+	return 0;
+}	
