@@ -8,9 +8,9 @@ int main(void)
 	while((ch = getchar()) != '\n')
 	{
 		if(isalpha(ch))		//如果是字母
-			putchar(ch+1);	//否则改变它
-		else
-			putchar(ch);
+			putchar(ch+1);	//则改变它
+		else			//否则
+			putchar(ch);	//原样打印它
 	}
 	putchar(ch);			//打印换行符
 	return 0;
