@@ -17,7 +17,7 @@ int main(void)
 	}
 	//getc(fp)从打开的文件中获取一个字符
 	while((ch =getc(fp))!=EOF)
-		putchar(ch);	//关闭文件
-	fclose(fp);
+		putchar(ch);	
+	fclose(fp);		//关闭文件
 	return 0;
 }
