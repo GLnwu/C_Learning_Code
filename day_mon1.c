@@ -8,7 +8,7 @@ int main(void)
 	int index;
 
 	for(index = 0; index < MONTHS; index++)
-		printf("Month %d has %2d days.\n",index+1,days[index]);
+		printf("Month %2d has %d days.\n",index+1,days[index]);
 	
 	return 0;
 }	
