@@ -1,4 +1,4 @@
-/* power.c -- 计算数值的整数次幂 */
+/* Prog_9.11.7.c -- 计算数值的整数(包括负数)次幂 */
 #include<stdio.h>
 double power(double n,int p);	//ANSI原型
 int main(void)
@@ -23,8 +23,13 @@ double power(double n,int p)	//函数定义
 {
 	double pow = 1;
 	int i;
-	
+	if(n==0)	//指数为0，返回0
+		return 0;
+
 	for(i = 1;i <= p; i++)
 		pow *= n;
+	if(n < 0)
+		return (-pow);
 	return pow;		//返回pow的值
 }
+
