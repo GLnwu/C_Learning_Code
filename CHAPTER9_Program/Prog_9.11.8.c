@@ -1,4 +1,4 @@
-/* Prog_9.11.7.c -- 计算数值的整数(包括负数)次幂 */
+/* Prog_9.11.8.c -- 计算数值的整数(包括负数)次幂－－使用递归方法 */
 #include<stdio.h>
 double power(double n,int p);	//ANSI原型
 int main(void)
@@ -21,12 +21,12 @@ int main(void)
 
 double power(double n,int p)	//函数定义
 {
-	double pow = 1;
-	int i;
 	if(n==0)	//指数为0，返回0
 		return 0;
-
-	for(i = 1;i <= p; i++)
-		pow *= n;
-	return pow;		//返回pow的值
+	if(p==0)
+		return 1;
+	if(p > 1)
+		return (n*power(n,p-1));
+	return n;
 }
+
