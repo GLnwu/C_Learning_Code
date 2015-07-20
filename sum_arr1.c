@@ -2,7 +2,7 @@
 //如果不能使用%zd, 请使用%u或%lu
 #include<stdio.h>
 #define SIZE 10
-int sum(int ar[],int n);
+int sum(int [],int );
 
 int main(void)
 {
