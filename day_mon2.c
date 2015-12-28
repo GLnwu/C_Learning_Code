@@ -10,3 +10,4 @@ int main(void)
 
 	return 0;
 }
+/* sizeof days计算的是整个数组的大小，以字节为单位。sizeof days[0]是一个元素的大小(以字节为单位)。*/
