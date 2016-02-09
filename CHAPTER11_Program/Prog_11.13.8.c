@@ -6,12 +6,35 @@
  ************************************************************************/
 
 #include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 #define MAX 100
+void reverse(char *);
 
 int main(void)
 {
-	char str[MAX]
+	char *str;
 
-	while(scanf)
+	str = (char *)malloc(MAX);
+
+	while(scanf("%s",str)){
+		printf("Before: %s\n",str);
+		reverse(str);
+		printf("After: %s\n",str);
+	}
+
 	return 0;
+}
+
+void reverse(char * str)
+{
+	int len = strlen(str);
+	int i,j;
+	char temp;
+
+	for(i = 0,j = len -1;i < len && j >= 0 && i < j;i++,j--){
+		temp = str[j];
+		str[j] = str[i];
+		str[i] = temp;
+	}
 }
