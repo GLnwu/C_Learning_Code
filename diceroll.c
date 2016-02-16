@@ -10,6 +10,7 @@
 #include<stdlib.h>		/* 为rand函数 提供类库 */
 
 int roll_count = 0;		/* external link */
+				/* record how many times rollem is been called */
 
 static int rollem(int sides)	/* 这个文件的私有函数 */
 /* 产生随机数 */
