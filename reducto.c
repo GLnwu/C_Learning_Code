@@ -11,37 +11,36 @@
 #define LEN 40
 int main(int argc,char * argv[])
 {
-	FILE *in,*out;	//声明两个FILE指针
+	FILE *in,*out;		//declare two FILE pointers
 	int ch;
-	char name[LEN];
+	char name[LEN];		//stroage for output filename
 	int count = 0;
-//检查命令行参数
+//check for command-line  arguments
 	if(argc < 2)
 	{
 		fprintf(stderr,"Usage: %s filename\n",argv[0]);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
-//实现输入
+//set up input
 	if((in = fopen(argv[1],"r")) ==NULL)
 	{
 		fprintf(stderr,"I couldn't open the file \"%s\"\n",argv[1]);
-		exit(2);
+		exit(EXIT_FAILURE);
 	}
-//实现输出
+//set up output
 	strncpy(name,argv[1],LEN-5);	//copy filename
 	name[LEN -5] = '\0';
-	strcat(name,".red");	//在文件名后添加.red
+	strcat(name,".red");		//append .red 
 	if((out = fopen(name,"w")) == NULL)
-	{		//打开文件以供写入
+	{		//open file for writing
 		fprintf(stderr,"Can't create output file.\n");
 		exit(3);
 	}
-
-//复制数据
+//copt data
 	while((ch = getc(in)) != EOF)
 		if(count++ %3 == 0)
-			putc(ch,out);	//打印每3个字符中的1个
-//收尾工作
+			putc(ch,out);	//print every 3rd char
+//clean up
 	if(fclose(in) != 0 || fclose(out) != 0)
 		fprintf(stderr,"Error in closing files\n");
 	

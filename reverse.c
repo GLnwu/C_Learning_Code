@@ -24,10 +24,10 @@ int main(void)
 		exit(1);
 	}
 	fseek(fp,0L,SEEK_END);		/* 定位到文件结尾处 */
-	last = ftell(fp);
+	last = ftell(fp);		/* 二进制模式下，计算从文件开始到文件当前位置的字节数 */
 	for(count = 1L;count <= last;count++)
 	{
-		fseek(fp,-count,SEEK_END);	/* 回退		*/
+		fseek(fp,-count,SEEK_END);	/* 改变文件位置指示器内容 */
 		ch = getc(fp);
 	/* 针对DOS，在UNXI下也可工作 */
 		if(ch != CNTL_Z && ch != '\r')
