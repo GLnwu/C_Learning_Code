@@ -1,7 +1,7 @@
 /*************************************************************************
-    > File Name: parrot.c
+> File Name: parrot.c
     > Author: GaoLi
-    > Mail: bingtang1021@gmail.com 
+    > Mail: bingtang1021@gmail.com
     > Created Time: 2016年02月18日 星期四 21时25分38秒
  ************************************************************************/
 /* parrot.c -- 使用fgets()和fputs()函数 */
@@ -16,4 +16,3 @@ int main(void)
 
 	return 0;
 }
-

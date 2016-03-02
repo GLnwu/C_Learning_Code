@@ -8,9 +8,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#define BUFSIZE 1024
+#define BUFSIZE 4096
 #define SLEN 81
 void append(FILE *source,FILE *dest);
+char * s_gets(char * st,int n);
 
 int main(void)
 {
@@ -20,7 +21,7 @@ int main(void)
 	char file_src[SLEN];	//源文件的名称
 
 	puts("Enter name of destination file:");
-	gets(file_app);
+	s_gets(file_app,SLEN);
 	if((fa = fopen(file_app,"a")) == NULL)
 	{
 		fprintf(stderr,"Can't open %s\n",file_app);
@@ -32,12 +33,12 @@ int main(void)
 		exit(3);
 	}
 	puts("Enter name of first source file(empty line to quit):");
-	while(gets(file_src) &&file_src[0] != '\0')
+	while(s_gets(file_src,SLEN) &&file_src[0] != '\0')
 	{
 		if(strcmp(file_src,file_app) == 0)
-			fputs("Can't append file to itself\n",stderr);
-		else if((fs = fopen(file_src,"r")) == NULL)
-			fprintf(stderr,"Can't open %s\n",file_src);
+			fputs("Can't append file to itself\n",stderr);	//追加文件和源文件不能相同
+		else if((fs = fopen(file_src,"r")) == NULL)		//只读模式打开源文件
+			fprintf(stderr,"Can't open %s\n",file_src);	
 		else
 		{
 			if(setvbuf(fs,NULL,_IOFBF,BUFSIZE) != 0)
@@ -68,4 +69,21 @@ void append(FILE *source,FILE *dest)
 	while((bytes = fread(temp,sizeof(char),BUFSIZE,source)) > 0)
 		fwrite(temp,sizeof(char),bytes,dest);
 }
+char * s_gets(char * st,int n)
+{
+	char * ret_val;			//将要返回的字符指针
+	char * find;
 
+	ret_val = fgets(st,n,stdin);	//fgets return string pointer on success
+	if(ret_val)			//如果非空，则证明，从标准输入中没有获得字符串，反之则成功
+	{
+		find = strchr(st,'\n');
+		if(find)		//找到就返回查找到俄指针，否则返回空指针
+			*find = '\0';	//在换行符的位置换上一个空字符'\0'
+		else
+			while(getchar() != '\n')
+				continue;
+	}
+	return ret_val;
+	/* fegts函数以后的代码，用来去掉st指针指向的字符串中的换行符 */
+}
