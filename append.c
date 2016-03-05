@@ -4,7 +4,7 @@
     > Mail: bingtang1021@gmail.com 
     > Created Time: 2016年02月28日 星期日 00时04分54秒
  ************************************************************************/
-/* append.c -- 把多个文件的内容追加到一个文件夹中 */
+/* append.c -- appends files to a file */
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -22,7 +22,7 @@ int main(void)
 
 	puts("Enter name of destination file:");
 	s_gets(file_app,SLEN);
-	if((fa = fopen(file_app,"a")) == NULL)
+	if((fa = fopen(file_app,"a+")) == NULL)
 	{
 		fprintf(stderr,"Can't open %s\n",file_app);
 		exit(2);
@@ -52,12 +52,19 @@ int main(void)
 			if(ferror(fa) != 0)
 				fprintf(stderr,"Error in writing file %s.\n",file_app);
 			fclose(fs);
+			files++;
 			printf("File %s appended.\n",file_src);
 			puts("Next file(empty line to quit):");
 		}
 	}
-	printf("Done.%d files appended.\n",files);
-	
+	printf("Done appending.%d files appended.\n",files);
+	rewind(fa);
+	printf("%s contents:\n",file_app);
+	while((ch = getc(fa)) != EOF)
+		putchar(ch);
+	puts("Done displaying.");
+	fclose(fa);
+
 	return 0;
 }
 
@@ -81,8 +88,8 @@ char * s_gets(char * st,int n)
 		if(find)		//找到就返回查找到俄指针，否则返回空指针
 			*find = '\0';	//在换行符的位置换上一个空字符'\0'
 		else
-			while(getchar() != '\n')
-				continue;
+			while(getchar() != '\n')	//有可能在stdin stream里的字符大于n-1，因此导致fgets函数可能读取n-1个以后，还有剩下的字符留在stdin,
+				continue;		//因此用getchar函数，将stdin中缓冲的字符都消耗掉
 	}
 	return ret_val;
 	/* fegts函数以后的代码，用来去掉st指针指向的字符串中的换行符 */
