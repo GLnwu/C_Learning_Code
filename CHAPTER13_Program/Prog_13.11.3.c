@@ -13,7 +13,7 @@
 
 char * s_gets(char *st,int n);
 
-int main(int argc,char *argv[])
+int main(void)
 {
 	int  i = 0;
 	char src[SLEN];
