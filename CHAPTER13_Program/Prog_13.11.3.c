@@ -28,25 +28,25 @@ int main(void)
 	s_gets(src,SLEN);
 	puts("Enter the name of destination");
 	s_gets(cpy,SLEN);
-	while(cpy[i] != '\0')
-	{
-		if(islower(cpy[i]))
-			cpy[i] = toupper(cpy[i]);
-		i++;
-	}
-
 	if((fp_src = fopen(src,"rb")) == NULL)
 	{
 		fprintf(stderr,"Can't open %s\n",src);
 		exit(EXIT_FAILURE);
 	}
-	if((fp_copy = fopen(cpy,"wxb")) == NULL)
+	if((fp_copy = fopen(cpy,"wb")) == NULL)
 	{
 		fprintf(stderr,"Can't open %s\n",cpy);
 		exit(EXIT_FAILURE);
 	}
 	while((bytes = fread(temp,sizeof(char),BUFSIZ,fp_src)) > 0)
+	{
+		while(temp[i] !='\0')
+		{
+			temp[i] = toupper(temp[i]);
+			i++;
+		}
 		fwrite(temp,sizeof(char),bytes,fp_copy);
+	}
 	printf("Done copying.%s is copied as %s",src,cpy);
 	if(fclose(fp_src) != 0)	
 	{
