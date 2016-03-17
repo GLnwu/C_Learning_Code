@@ -19,7 +19,7 @@ int main(void)
 	int  files = 0;		//被追加的个数
 	char file_app[SLEN];	//被追加文件的名称
 	char file_src[SLEN];	//源文件的名称
-	int  ch
+	int  ch;
 
 	puts("Enter name of destination file:");
 	s_gets(file_app,SLEN);
