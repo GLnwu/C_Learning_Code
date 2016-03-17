@@ -16,9 +16,10 @@ char * s_gets(char * st,int n);
 int main(void)
 {
 	FILE *fa,*fs;		//fa指向追加的目的文件，fs指向源文件
-	int files = 0;		//被追加的个数
+	int  files = 0;		//被追加的个数
 	char file_app[SLEN];	//被追加文件的名称
 	char file_src[SLEN];	//源文件的名称
+	int  ch
 
 	puts("Enter name of destination file:");
 	s_gets(file_app,SLEN);
