@@ -86,7 +86,7 @@ char * s_gets(char * st,int n)
 	if(ret_val)			//如果非空，则证明，从标准输入中没有获得字符串，反之则成功
 	{
 		find = strchr(st,'\n');
-		if(find)		//找到就返回查找到俄指针，否则返回空指针
+		if(find)		//找到就返回查找到换行符的位置的指针，否则返回空指针
 			*find = '\0';	//在换行符的位置换上一个空字符'\0'
 		else
 			while(getchar() != '\n')	//有可能在stdin stream里的字符大于n-1，因此导致fgets函数可能读取n-1个以后，还有剩下的字符留在stdin,
